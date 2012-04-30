@@ -1,0 +1,3 @@
+<html>
+	Spring MVC!
+</html>

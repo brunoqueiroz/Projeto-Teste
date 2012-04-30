@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="gerenciadorProduto" class="br.com.caelum.estoque.GerenciadorDeProduto" scope="prototype">
+		<constructor-arg ref="cfSpring" />
+		<property name="produtoDAO" ref="produtoDAO" />
+	</bean>
+
+	<bean id="produtoDAO" class="br.com.caelum.estoque.dao.ProdutoMemoriaDAO" />
+
+	<bean id="springBean" class="br.com.caelum.estoque.SpringBean">
+		<property name="nome" value="Caelum" />
+		<property name="quantidade" value="10" />
+		<property name="propriedades">
+			<props>
+				<prop key="cidade">São Paulo</prop>
+				<prop key="pais">Brasil</prop>
+			</props>
+		</property>
+		
+		<property name="nomes">
+			<list>
+				<value>Jose</value>
+				<value>Joao</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="br.com.caelum.estoque.dao.ConnectionFactory" id="cf" factory-method="getConnection" />
+	
+	<bean class="br.com.caelum.estoque.dao.ConnectionFactorySpring" id="cfSpring" />
+	
+</beans>
